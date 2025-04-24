@@ -4,5 +4,6 @@ enum class WorkoutType {
     CARDIO,
     STRENGTH,
     PILATES,
-    RUNNING
+    RUNNING,
+    WALKING
 }

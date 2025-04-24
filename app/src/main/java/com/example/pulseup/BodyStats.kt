@@ -3,10 +3,11 @@ package com.example.pulseup
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.net.URL
+import java.util.UUID
 
 @Entity(tableName = "body_stats")
 class BodyStats (
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val userId: String,
     val date: String,
     val weight: Float,
