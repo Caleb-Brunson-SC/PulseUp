@@ -6,6 +6,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.pulseup.ui.activities.ActivitiesDestination
+import com.example.pulseup.ui.activities.ActivitiesScreen
+import com.example.pulseup.ui.home.HomeDestination
+import com.example.pulseup.ui.home.HomeScreen
+import com.example.pulseup.ui.record.RecordDestination
+import com.example.pulseup.ui.record.RecordScreen
 import com.example.pulseup.ui.signin.SignInDestination
 import com.example.pulseup.ui.signin.SignInScreen
 import com.example.pulseup.ui.signup.SignUpDestination
@@ -37,6 +43,15 @@ fun PulseUpNavHost(
         }
         composable(route = SignUpDestination.route) {
             SignUpScreen()
+        }
+        composable(route = HomeDestination.route) {
+            HomeScreen()
+        }
+        composable(route = RecordDestination.route) {
+            RecordScreen()
+        }
+        composable(route = ActivitiesDestination.route) {
+            ActivitiesScreen()
         }
     }
 }

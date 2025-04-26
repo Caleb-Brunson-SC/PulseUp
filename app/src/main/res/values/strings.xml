@@ -2,5 +2,8 @@
     <string name="app_name">PulseUp</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
+    <string name="home">Home</string>
+    <string name="record">Record</string>
+    <string name="activities">Activities</string>
     <string name="back_button">Back</string>
 </resources>
