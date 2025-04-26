@@ -13,7 +13,7 @@ interface  WorkoutDao {
     suspend fun insertWorkout(workout: Workout)
 
     @Query("SELECT * FROM workouts WHERE userId = :userId ORDER BY date DESC")
-    suspend fun getWorkoutsByUser(userId: String): Flow<List<Workout>>
+    suspend fun getWorkoutsByUser(userId: String): List<Workout>
 
     @Query("SELECT * FROM workouts WHERE id = :workoutId")
     suspend fun getWorkoutById(workoutId: String): Workout?

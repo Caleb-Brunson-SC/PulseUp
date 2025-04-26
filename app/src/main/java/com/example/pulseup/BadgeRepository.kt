@@ -1,6 +1,8 @@
 package com.example.pulseup
 
-class BadgeRepository (
+import javax.inject.Inject
+
+class BadgeRepository @Inject constructor(
     private val badgeDao: BadgeDao
 ) {
     suspend fun insertBadge(badge: Badge) = badgeDao.insertBadge(badge)

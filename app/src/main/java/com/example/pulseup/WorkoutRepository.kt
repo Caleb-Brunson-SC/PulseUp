@@ -1,6 +1,8 @@
 package com.example.pulseup
 
-class WorkoutRepository(
+import javax.inject.Inject
+
+class WorkoutRepository @Inject constructor(
     private val workoutDao: WorkoutDao
 ) {
     suspend fun saveWorkout(workout: Workout) = workoutDao.insertWorkout(workout)

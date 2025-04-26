@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [User::class, Workout::class, BodyStats::class, Badge::class],
-    version = 1,
+    version = 2,
 )
 
 abstract class PulseUpDatabase: RoomDatabase() {

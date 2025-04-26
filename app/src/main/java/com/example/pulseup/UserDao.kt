@@ -16,10 +16,13 @@ interface UserDao {
     suspend fun getUser(userId: String): User?
 
     @Query("SELECT * FROM users WHERE username =:username AND password = :password")
-    suspend fun login(username: String, password: String)
+    suspend fun login(username: String, password: String): User?
 
     @Query("SELECT * FROM users WHERE email = :email")
-    suspend fun getUserByEmail(email: String): User? = getUserByEmail(email)
+    suspend fun getUserByEmail(email: String): User?
+
+    @Query("SELECT * FROM users WHERE username = :username")
+    suspend fun getUserByUsername(username: String): User?
 
     @Update
     suspend fun updateUser(user: User)

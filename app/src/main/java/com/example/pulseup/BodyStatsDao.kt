@@ -1,10 +1,10 @@
 package com.example.pulseup
 
-import androidx.room.Entity
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 
-@Entity
+@Dao
 interface BodyStatsDao {
     @Insert
     suspend fun insert(stats: BodyStats)
