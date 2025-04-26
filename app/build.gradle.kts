@@ -43,8 +43,12 @@ android {
 }
 
 dependencies {
+    // new
+    implementation("androidx.navigation:navigation-compose:2.8.4")
 
+    // old
     implementation(libs.hilt.android)
+    implementation(libs.androidx.navigation.runtime.android)
     ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.room.runtime)

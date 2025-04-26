@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PulseUp</string>
+    // Add strings for name of screens. see titleRes value in NavigationDestination.kt file
 </resources>
