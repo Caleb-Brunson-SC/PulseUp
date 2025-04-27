@@ -11,13 +11,21 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pulseup.ui.navigation.PulseUpNavHost
 import com.example.pulseup.R.string
 import com.example.pulseup.ui.navigation.BottomNavigationBar
+import com.example.pulseup.ui.signin.SignInDestination
+import com.example.pulseup.ui.signup.SignUpDestination
+import com.example.pulseup.ui.welcome.WelcomeDestination
 
 
 /**
@@ -26,13 +34,26 @@ import com.example.pulseup.ui.navigation.BottomNavigationBar
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun PulseUpApp(navController: NavHostController = rememberNavController()) {
+    var showBottomBar by rememberSaveable { mutableStateOf(true) }
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+
+    showBottomBar = when (navBackStackEntry?.destination?.route) {
+        WelcomeDestination.route -> false // on this screen bottom bar should be hidden
+        SignInDestination.route -> false // here too
+        SignUpDestination.route -> false // also here
+        else -> true // in all other cases show bottom bar
+    }
+    // Useful solution:
+    // https://stackoverflow.com/questions/66837991/hide-top-and-bottom-navigator-on-a-specific-screen-inside-scaffold-jetpack-compo
     Scaffold(
         // Need to figure out how to hide this bottom bar for the Welcome, SignIn and SignUp Screens
-        bottomBar = { BottomNavigationBar(navController) }
+        bottomBar = { if (showBottomBar) BottomNavigationBar(navController) }
     ) {
         PulseUpNavHost(navController = navController)
     }
 }
+
+
 
 /**
  * Top app bar to display the title and conditionally display the back navigation.
