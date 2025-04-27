@@ -1,9 +1,14 @@
 package com.example.pulseup.ui.welcome
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
@@ -15,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.ui.navigation.NavigationDestination
 import com.example.pulseup.R
-import com.example.pulseup.ui.home.HomeDestination
 
 /**
  * Companion object for the Welcome Screen's Navigation Destination.
@@ -33,8 +37,7 @@ object WelcomeDestination : NavigationDestination {
 @Composable
 fun WelcomeScreen(
     onSignInButtonClicked: () -> Unit = {},
-    onSignUpButtonClicked: () -> Unit = {},
-    modifier: Modifier = Modifier
+    onSignUpButtonClicked: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -49,19 +52,20 @@ fun WelcomeScreen(
         Column(
             modifier = Modifier
                 .padding(16.dp)
-                .fillMaxSize()
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "hello")
-
             OutlinedButton(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.fillMaxWidth(),
                 onClick = onSignInButtonClicked
             ) {
                 Text(stringResource(R.string.sign_in))
             }
 
+            Spacer(modifier = Modifier.height(20.dp))
+
             OutlinedButton(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.fillMaxWidth(),
                 onClick = onSignUpButtonClicked
             ) {
                 Text(stringResource(R.string.sign_up))

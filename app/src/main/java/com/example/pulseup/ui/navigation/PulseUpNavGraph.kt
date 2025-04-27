@@ -1,6 +1,5 @@
 package com.example.pulseup.ui.navigation
 
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -37,7 +36,7 @@ fun PulseUpNavHost(
         composable(route = WelcomeDestination.route) {
             WelcomeScreen(
                 onSignInButtonClicked = { navController.navigate(SignInDestination.route) },
-                onSignUpButtonClicked = { navController.navigate(SignUpDestination.route) },
+                onSignUpButtonClicked = { navController.navigate(SignUpDestination.route) }
             )
         }
         composable(route = SignInDestination.route) {
