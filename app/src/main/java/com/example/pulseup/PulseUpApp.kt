@@ -3,6 +3,7 @@ package com.example.pulseup
 import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -26,7 +27,6 @@ import com.example.pulseup.ui.navigation.BottomNavigationBar
 import com.example.pulseup.ui.signin.SignInDestination
 import com.example.pulseup.ui.signup.SignUpDestination
 import com.example.pulseup.ui.welcome.WelcomeDestination
-
 
 /**
  * Top level composable that represents screens for the application.
@@ -62,6 +62,7 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
 @Composable
 fun PulseUpTopAppBar(
     title: String,
+    showProfileIcon: Boolean,
     canNavigateBack: Boolean,
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
@@ -80,6 +81,16 @@ fun PulseUpTopAppBar(
                     )
                 }
             }
-        }
+        },
+        actions = {
+            if (showProfileIcon) {
+                IconButton(onClick = { /* do something */ }) {
+                    Icon(
+                        imageVector = Icons.Filled.AccountCircle,
+                        contentDescription = "Profile"
+                    )
+                }
+            }
+        },
     )
 }

@@ -39,6 +39,7 @@ fun SignUpScreen(
         topBar = {
             PulseUpTopAppBar(
                 title = stringResource(SignUpDestination.titleRes),
+                showProfileIcon = false,
                 canNavigateBack = true,
                 navigateUp = navigateBack
             )

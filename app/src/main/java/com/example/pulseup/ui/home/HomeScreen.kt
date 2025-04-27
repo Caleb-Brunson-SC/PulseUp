@@ -33,8 +33,8 @@ fun HomeScreen(
         topBar = {
             PulseUpTopAppBar(
                 title = stringResource(HomeDestination.titleRes),
-                canNavigateBack = false,
-                navigateUp = { } // not sure what to make this
+                showProfileIcon = true,
+                canNavigateBack = false
             )
         }
     ) {
