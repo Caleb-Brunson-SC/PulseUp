@@ -40,11 +40,13 @@ fun PulseUpNavHost(
         }
         composable(route = SignInDestination.route) {
             SignInScreen(
+                onCompleteButtonClicked = { navController.navigate(HomeDestination.route) },
                 navigateBack = { navController.navigateUp() }
             )
         }
         composable(route = SignUpDestination.route) {
             SignUpScreen(
+                onCompleteButtonClicked = { navController.navigate(HomeDestination.route) },
                 navigateBack = { navController.navigateUp() }
             )
         }

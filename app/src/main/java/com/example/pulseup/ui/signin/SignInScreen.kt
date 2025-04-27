@@ -1,11 +1,17 @@
 package com.example.pulseup.ui.signin
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.R
 import com.example.pulseup.ui.navigation.NavigationDestination
@@ -38,13 +44,17 @@ fun SignInScreen(
             )
         }
     ) {
-        SignInBody()
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxSize()
+        ) {
+            OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = onCompleteButtonClicked
+            ) {
+                Text(stringResource(R.string.complete))
+            }
+        }
     }
-}
-
-@Composable
-private fun SignInBody(
-    modifier: Modifier = Modifier
-) {
-
 }

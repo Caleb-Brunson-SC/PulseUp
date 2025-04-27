@@ -34,7 +34,7 @@ fun WelcomeScreen(
     Column(
         modifier = Modifier
             .padding(16.dp)
-            //.fillMaxSize()
+            .fillMaxSize()
     ) {
         Text(text = "hello")
 
