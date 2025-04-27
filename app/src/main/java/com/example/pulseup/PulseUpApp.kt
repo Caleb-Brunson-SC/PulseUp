@@ -26,6 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.pulseup.ui.navigation.PulseUpNavHost
 import com.example.pulseup.R.string
 import com.example.pulseup.ui.navigation.BottomNavigationBar
+import com.example.pulseup.ui.settings.SettingsDestination
 import com.example.pulseup.ui.signin.SignInDestination
 import com.example.pulseup.ui.signup.SignUpDestination
 import com.example.pulseup.ui.welcome.WelcomeDestination
@@ -86,13 +87,13 @@ fun PulseUpTopAppBar(
         },
         actions = {
             if (showActionsIcon) {
-                IconButton(onClick = { /* do something */ }) {
+                IconButton(onClick = { }) {
                     Icon(
                         imageVector = Icons.Filled.Notifications,
                         contentDescription = "Notifications"
                     )
                 }
-                IconButton(onClick = { /* do something */ }) {
+                IconButton(onClick = { }) {
                     Icon(
                         imageVector = Icons.Filled.Settings,
                         contentDescription = "Settings"

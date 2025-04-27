@@ -6,6 +6,7 @@
     <string name="record">Record</string>
     <string name="activities">Activities</string>
     <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
     <string name="back_button">Back</string>
     <string name="complete">Complete</string>
 </resources>
