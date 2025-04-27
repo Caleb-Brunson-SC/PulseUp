@@ -39,10 +39,14 @@ fun PulseUpNavHost(
             )
         }
         composable(route = SignInDestination.route) {
-            SignInScreen()
+            SignInScreen(
+                navigateBack = { navController.navigateUp() }
+            )
         }
         composable(route = SignUpDestination.route) {
-            SignUpScreen()
+            SignUpScreen(
+                navigateBack = { navController.navigateUp() }
+            )
         }
         composable(route = HomeDestination.route) {
             HomeScreen()
