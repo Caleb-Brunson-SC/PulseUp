@@ -2,6 +2,7 @@ package com.example.pulseup.ui.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
@@ -19,6 +20,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.pulseup.ui.activities.ActivitiesDestination
 import com.example.pulseup.ui.home.HomeDestination
+import com.example.pulseup.ui.profile.ProfileDestination
 import com.example.pulseup.ui.record.RecordDestination
 
 /**
@@ -46,8 +48,13 @@ fun BottomNavigationBar(
         ),
         NavigationItem(
             title = "Activities",
-            icon = Icons.Default.Person,
+            icon = Icons.Default.DateRange,
             route = ActivitiesDestination.route
+        ),
+        NavigationItem(
+            title = "Profile",
+            icon = Icons.Default.Person,
+            route = ProfileDestination.route
         )
     )
 

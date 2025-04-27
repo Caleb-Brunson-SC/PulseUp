@@ -10,6 +10,8 @@ import com.example.pulseup.ui.activities.ActivitiesDestination
 import com.example.pulseup.ui.activities.ActivitiesScreen
 import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.home.HomeScreen
+import com.example.pulseup.ui.profile.ProfileDestination
+import com.example.pulseup.ui.profile.ProfileScreen
 import com.example.pulseup.ui.record.RecordDestination
 import com.example.pulseup.ui.record.RecordScreen
 import com.example.pulseup.ui.signin.SignInDestination
@@ -58,6 +60,9 @@ fun PulseUpNavHost(
         }
         composable(route = ActivitiesDestination.route) {
             ActivitiesScreen()
+        }
+        composable(route = ProfileDestination.route) {
+            ProfileScreen()
         }
     }
 }

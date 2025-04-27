@@ -32,7 +32,7 @@ fun ActivitiesScreen(
         topBar = {
             PulseUpTopAppBar(
                 title = stringResource(ActivitiesDestination.titleRes),
-                showProfileIcon = true,
+                showActionsIcon = true,
                 canNavigateBack = false
             )
         }

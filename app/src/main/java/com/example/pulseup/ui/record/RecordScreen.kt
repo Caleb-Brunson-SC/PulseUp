@@ -32,7 +32,7 @@ fun RecordScreen(
         topBar = {
             PulseUpTopAppBar(
                 title = stringResource(RecordDestination.titleRes),
-                showProfileIcon = true,
+                showActionsIcon = true,
                 canNavigateBack = false
             )
         }

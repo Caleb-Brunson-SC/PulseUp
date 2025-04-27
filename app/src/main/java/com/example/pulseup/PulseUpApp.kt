@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -62,7 +63,7 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
 @Composable
 fun PulseUpTopAppBar(
     title: String,
-    showProfileIcon: Boolean,
+    showActionsIcon: Boolean,
     canNavigateBack: Boolean,
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
@@ -83,11 +84,11 @@ fun PulseUpTopAppBar(
             }
         },
         actions = {
-            if (showProfileIcon) {
+            if (showActionsIcon) {
                 IconButton(onClick = { /* do something */ }) {
                     Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "Profile"
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = "Settings"
                     )
                 }
             }

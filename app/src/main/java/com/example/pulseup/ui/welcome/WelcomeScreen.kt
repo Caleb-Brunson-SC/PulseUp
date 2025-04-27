@@ -40,7 +40,7 @@ fun WelcomeScreen(
         topBar = {
             PulseUpTopAppBar(
                 title = stringResource(WelcomeDestination.titleRes),
-                showProfileIcon = false,
+                showActionsIcon = false,
                 canNavigateBack = false,
                 navigateUp = { } // not sure what to make this
             )
