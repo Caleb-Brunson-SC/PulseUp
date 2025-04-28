@@ -8,19 +8,35 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.R
+import com.example.pulseup.data.Datasource
 import com.example.pulseup.model.Activity
 import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.navigation.NavigationDestination
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
+
 
 /**
  * Companion object for the Activities Navigation Destination.
@@ -48,26 +64,10 @@ fun ActivitiesScreen(
             )
         }
     ) {
-        LazyColumn(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxSize()
-        ) {
-            // Add a single item
-            item {
-                Text(text = "First item")
-            }
-
-            // Add 5 items
-            items(5) { index ->
-                Text(text = "Item: $index")
-            }
-
-            // Add another single item
-            item {
-                Text(text = "Last item")
-            }
-        }
+        ActivityList(
+            activityList = Datasource().loadActivities(),
+            modifier = Modifier.padding(top = 75.dp) // padding so top of list isn't hidden by top bar
+        )
     }
 }
 
@@ -75,7 +75,7 @@ fun ActivitiesScreen(
 fun ActivityList(activityList: List<Activity>, modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = modifier
-            .padding(16.dp)
+            .padding(4.dp)
             .fillMaxSize()
     ) {
         items(activityList) { activity ->
@@ -90,11 +90,37 @@ fun ActivityList(activityList: List<Activity>, modifier: Modifier = Modifier) {
 @Composable
 fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
     // column with rows inside of a card
-    Card(modifier = modifier) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+    ) {
         Column {
-            Row {
+            Row (
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 // user profile image
+                Image(
+                    painter = painterResource(activity.imageResourceId),
+                    contentDescription = activity.imageDescription,
+                    modifier = Modifier
+                        .size(50.dp)
+                        .clip(CircleShape)
+                )
                 // user name
+                Spacer(modifier = Modifier.width(6.dp))
+                Column {
+                    Text(
+                        text = activity.userFullName,
+                        fontWeight = FontWeight.Bold
+                        //modifier = Modifier.padding(top = 10.dp)
+                        // modifier
+                        // style = material theme?
+                    )
+                    Text(
+                        text = activity.date + " | " + activity.location
+                    )
+                }
+
             }
             Row {
                 // date published

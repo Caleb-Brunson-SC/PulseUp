@@ -1,5 +1,6 @@
 package com.example.pulseup.data
 
+import com.example.pulseup.R
 import com.example.pulseup.model.Activity
 
 /**
@@ -9,7 +10,8 @@ import com.example.pulseup.model.Activity
 class Datasource {
     fun loadActivities() : List<Activity> {
         return listOf<Activity>(
-            Activity()
+            Activity(R.drawable.gigachad, "gigachad", "Giga Chad",
+                "April 28, 2025", "Columbia, South Carolina")
         )
     }
 }
