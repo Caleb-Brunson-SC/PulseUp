@@ -100,6 +100,10 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
                 // date published
                 // location (optional)?
             }
+            // Text() for activity data
+            // Text() for description
+            // Optional image
+            // like and share icons
         }
     }
 }
