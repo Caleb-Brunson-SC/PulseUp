@@ -35,6 +35,7 @@ import com.example.pulseup.model.Activity
 import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.navigation.NavigationDestination
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 
 
@@ -95,9 +96,7 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
             .padding(bottom = 10.dp)
     ) {
         Column {
-            Row (
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            Row {
                 // user profile image
                 Image(
                     painter = painterResource(activity.imageResourceId),
@@ -120,33 +119,64 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
 
             }
             Spacer(modifier = Modifier.height(2.dp))
-            Column (
-                modifier = Modifier
-                    .padding(start = 10.dp, end = 10.dp)
+            // Activity title
+            Text (
+                text = activity.title,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            // Row with Type, Duration, and Calories
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                // Row with activity type and title
-                Row {
+                Column {
                     Text(
-                        text = activity.type,
+                        text = "Type:",
                         fontWeight = FontWeight.Bold
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text (
-                        text = activity.title
+                    Text(
+                        text = activity.type
                     )
                 }
-                Spacer(modifier = Modifier.height(2.dp))
-                // Activity Content
-                Text(
-                    text = activity.content
-                )
-                Spacer(modifier = Modifier.height(2.dp))
-                // Activity description
-                Text(
-                    text = activity.description
-                )
-                // optional image??
+                Column {
+                    Text(
+                        text = "Duration:",
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = activity.duration
+                    )
+                }
+                Column {
+                    Text(
+                        text = "Calories:",
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = activity.caloriesBurned
+                    )
+                }
             }
+            Spacer(modifier = Modifier.height(4.dp))
+            // Activity Content
+            Text(
+                text = "Workout:",
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = activity.workout
+            )
+            Spacer(modifier = Modifier.height(2.dp))
+            // Activity description
+            Text(
+                text = "Notes:",
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = activity.notes
+            )
+            // optional image??
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.pulseup.model
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 
 /**
  * [Activity] is the data class to represent the Activity components.
@@ -11,8 +12,10 @@ data class Activity(
     val userFullName: String,
     val date: String,
     val location: String,
-    val type: String, // could be made an enumeration later
     val title: String,
-    val content: String,
-    val description: String
+    val type: String, // could be made an enumeration later
+    val duration: String,
+    val caloriesBurned: String,
+    val workout: String,
+    val notes: String
 )
