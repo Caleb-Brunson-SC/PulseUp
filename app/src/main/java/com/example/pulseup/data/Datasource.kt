@@ -11,7 +11,21 @@ class Datasource {
     fun loadActivities() : List<Activity> {
         return listOf<Activity>(
             Activity(R.drawable.gigachad, "gigachad", "Giga Chad",
-                "April 28, 2025", "Columbia, South Carolina")
+                "April 28, 2025", "Columbia, South Carolina",
+                "Run", "Columbia Jog",
+                "4 x 1 mile @ 5:00 min/mi pace", "Felt really good! :)"),
+            Activity(R.drawable.gigachad, "gigachad", "Giga Chad",
+                "April 28, 2025", "Columbia, South Carolina",
+                "Run", "Columbia Jog",
+                "4 x 1 mile @ 5:00 min/mi pace", "Felt really good! :)"),
+            Activity(R.drawable.gigachad, "gigachad", "Giga Chad",
+                "April 28, 2025", "Columbia, South Carolina",
+                "Run", "Columbia Jog",
+                "4 x 1 mile @ 5:00 min/mi pace", "Felt really good! :)"),
+            Activity(R.drawable.gigachad, "gigachad", "Giga Chad",
+                "April 28, 2025", "Columbia, South Carolina",
+                "Run", "Columbia Jog",
+                "4 x 1 mile @ 5:00 min/mi pace", "Felt really good! :)")
         )
     }
 }

@@ -66,7 +66,6 @@ fun ActivitiesScreen(
     ) {
         ActivityList(
             activityList = Datasource().loadActivities(),
-            modifier = Modifier.padding(top = 75.dp) // padding so top of list isn't hidden by top bar
         )
     }
 }
@@ -74,8 +73,8 @@ fun ActivitiesScreen(
 @Composable
 fun ActivityList(activityList: List<Activity>, modifier: Modifier = Modifier) {
     LazyColumn(
-        modifier = modifier
-            .padding(4.dp)
+        modifier = Modifier
+            .padding(start = 4.dp, top = 100.dp, end = 4.dp)
             .fillMaxSize()
     ) {
         items(activityList) { activity ->
@@ -91,8 +90,9 @@ fun ActivityList(activityList: List<Activity>, modifier: Modifier = Modifier) {
 fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
     // column with rows inside of a card
     Card(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
+            .padding(bottom = 10.dp)
     ) {
         Column {
             Row (
@@ -112,9 +112,6 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
                     Text(
                         text = activity.userFullName,
                         fontWeight = FontWeight.Bold
-                        //modifier = Modifier.padding(top = 10.dp)
-                        // modifier
-                        // style = material theme?
                     )
                     Text(
                         text = activity.date + " | " + activity.location
@@ -122,14 +119,34 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
                 }
 
             }
-            Row {
-                // date published
-                // location (optional)?
+            Spacer(modifier = Modifier.height(2.dp))
+            Column (
+                modifier = Modifier
+                    .padding(start = 10.dp, end = 10.dp)
+            ) {
+                // Row with activity type and title
+                Row {
+                    Text(
+                        text = activity.type,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text (
+                        text = activity.title
+                    )
+                }
+                Spacer(modifier = Modifier.height(2.dp))
+                // Activity Content
+                Text(
+                    text = activity.content
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                // Activity description
+                Text(
+                    text = activity.description
+                )
+                // optional image??
             }
-            // Text() for activity data
-            // Text() for description
-            // Optional image
-            // like and share icons
         }
     }
 }

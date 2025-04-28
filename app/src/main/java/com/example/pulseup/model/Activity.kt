@@ -10,5 +10,9 @@ data class Activity(
     val imageDescription: String,
     val userFullName: String,
     val date: String,
-    val location: String
+    val location: String,
+    val type: String, // could be made an enumeration later
+    val title: String,
+    val content: String,
+    val description: String
 )
