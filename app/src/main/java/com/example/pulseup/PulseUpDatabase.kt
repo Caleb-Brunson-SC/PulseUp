@@ -6,13 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [User::class, Workout::class, BodyStats::class, Badge::class],
+    entities = [User::class, Workout::class, BodyStats::class, Badge::class, Activity::class],
     version = 2,
 )
 
 abstract class PulseUpDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun workoutDao(): WorkoutDao
+    abstract fun activityDao(): ActivityDao
     abstract fun badgeDao(): BadgeDao
     abstract fun bodyStatsDao(): BodyStatsDao
 

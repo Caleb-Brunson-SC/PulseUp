@@ -35,5 +35,8 @@ object DatabaseModule {
     @Provides
     fun provideBodyStatsDao(db: PulseUpDatabase): BodyStatsDao = db.bodyStatsDao()
 
+    @Provides
+    fun provideActivityDao(db: PulseUpDatabase): ActivityDao = db.activityDao()
+
 
 }
