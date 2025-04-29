@@ -113,7 +113,7 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = activity.date + " | " + activity.location
+                        text = activity.date
                     )
                 }
 
