@@ -49,6 +49,7 @@ dependencies {
     // old
     implementation(libs.hilt.android)
     implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.storage)
     ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.room.runtime)
