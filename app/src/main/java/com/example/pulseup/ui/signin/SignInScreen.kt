@@ -14,7 +14,9 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -23,7 +25,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.R
+import com.example.pulseup.UserViewModel
 import com.example.pulseup.ui.navigation.NavigationDestination
+import androidx.hilt.navigation.compose.hiltViewModel
 
 /**
  * Companion object for the Sign In Screen's Navigation Destination.
@@ -42,10 +46,23 @@ object SignInDestination : NavigationDestination {
 fun SignInScreen(
     onCompleteButtonClicked: () -> Unit = {},
     navigateBack: () -> Unit,
+    userViewModel: UserViewModel = hiltViewModel(),
+    onLoginSuccess: () -> Unit,
+    onSignUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val user by userViewModel.user.observeAsState()
+
+    val errorMessage = userViewModel.errorMessage.observeAsState()
+
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
+    LaunchedEffect(user) {
+        if (user != null) {
+            onLoginSuccess()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -83,9 +100,12 @@ fun SignInScreen(
 
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = onCompleteButtonClicked
+                onClick = {
+                    userViewModel.login(username, password)
+                    onCompleteButtonClicked()
+                }
             ) {
-                Text(stringResource(R.string.complete))
+                Text(stringResource(R.string.sign_in))
             }
         }
     }

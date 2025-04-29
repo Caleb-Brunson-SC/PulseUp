@@ -1,5 +1,6 @@
 package com.example.pulseup
 
+import com.example.pulseup.model.Activity
 import javax.inject.Inject
 
 class ActivityRepository @Inject constructor (
