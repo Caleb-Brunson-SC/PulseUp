@@ -172,6 +172,8 @@ fun RecordScreen(
                 }
             }
 
+            Spacer(modifier = Modifier.height(16.dp))
+
             // Activity type dropdown selection menu
             // Up and down icons for expansion
             val icon = if (expanded)
@@ -217,6 +219,33 @@ fun RecordScreen(
                     }
                 }
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = calories,
+                onValueChange = { calories = it },
+                label = { Text("Calories Burned") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = workoutContent,
+                onValueChange = { workoutContent = it },
+                label = { Text("Workout Content") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = notes,
+                onValueChange = { notes = it },
+                label = { Text("Notes") },
+                modifier = Modifier.fillMaxWidth()
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
