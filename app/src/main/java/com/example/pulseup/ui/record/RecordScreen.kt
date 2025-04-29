@@ -9,6 +9,7 @@ import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -100,7 +101,6 @@ fun RecordScreen(
     var activityType by remember { mutableStateOf("") }
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
 
-    // Other variables
     var duration by remember { mutableStateOf("") }
     var calories by remember { mutableStateOf("") }
     var workoutContent by remember { mutableStateOf("") }
@@ -117,7 +117,7 @@ fun RecordScreen(
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp)
+                .padding(start = 16.dp, end = 16.dp)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center
         ) {
@@ -172,8 +172,6 @@ fun RecordScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
-
             // Activity type dropdown selection menu
             // Up and down icons for expansion
             val icon = if (expanded)
@@ -220,7 +218,13 @@ fun RecordScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            // Input field for duration in HH:MM:SS, need to validate user put in correct format
+            OutlinedTextField(
+                value = duration,
+                onValueChange = { duration = it },
+                label = { Text("Duration (HH:MM:SS)") },
+                modifier = Modifier.fillMaxWidth()
+            )
 
             OutlinedTextField(
                 value = calories,
@@ -229,16 +233,12 @@ fun RecordScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
-
             OutlinedTextField(
                 value = workoutContent,
                 onValueChange = { workoutContent = it },
                 label = { Text("Workout Content") },
                 modifier = Modifier.fillMaxWidth()
             )
-
-            Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedTextField(
                 value = notes,
