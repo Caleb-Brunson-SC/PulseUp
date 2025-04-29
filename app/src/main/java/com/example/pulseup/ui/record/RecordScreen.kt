@@ -237,14 +237,16 @@ fun RecordScreen(
                 value = workoutContent,
                 onValueChange = { workoutContent = it },
                 label = { Text("Workout Content") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = false
             )
 
             OutlinedTextField(
                 value = notes,
                 onValueChange = { notes = it },
                 label = { Text("Notes") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = false
             )
 
             Spacer(modifier = Modifier.height(16.dp))
