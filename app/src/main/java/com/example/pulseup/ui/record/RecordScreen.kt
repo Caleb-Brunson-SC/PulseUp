@@ -179,7 +179,7 @@ fun RecordScreen(
             else
                 Icons.Filled.KeyboardArrowDown
 
-            Column(Modifier.padding(20.dp)) {
+            Column {
                 // Text field with icon and not expanded
                 OutlinedTextField(
                     value = activityType,
