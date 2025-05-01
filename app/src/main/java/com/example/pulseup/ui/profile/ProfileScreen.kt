@@ -2,6 +2,7 @@ package com.example.pulseup.ui.profile
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,7 @@ import com.example.pulseup.ui.navigation.NavigationDestination
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
@@ -60,7 +62,7 @@ fun ProfileScreen(
     ) {
         Column (
             modifier = Modifier
-                .padding(start = 4.dp, top = 100.dp, end = 4.dp)
+                .padding(start = 8.dp, top = 75.dp, end = 8.dp)
                 .fillMaxSize()
         ) {
             Row (
@@ -82,10 +84,43 @@ fun ProfileScreen(
                     fontSize = 24.sp
                 )
             }
+            Spacer(Modifier.height(10.dp))
             Row {
                 Text(
                     text = "This is giga chad's user profile description text segment."
                 )
+            }
+            Spacer(Modifier.height(10.dp))
+            Row (
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = "Following"
+                    )
+                    Text(
+                        text = "64",
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Spacer(Modifier.width(20.dp))
+                Column {
+                    Text(
+                        text = "Followers"
+                    )
+                    Text(
+                        text = "66",
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Spacer(Modifier.width(20.dp))
+                OutlinedButton(
+                    onClick = {}
+                ) {
+                    Text(
+                        text = "Edit"
+                    )
+                }
             }
         }
     }
