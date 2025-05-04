@@ -1,5 +1,6 @@
 package com.example.pulseup.ui.navigation
 
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.DateRange
@@ -16,12 +17,16 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+//import com.example.pulseup.UserViewModel
 import com.example.pulseup.ui.activities.ActivitiesDestination
 import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.profile.ProfileDestination
 import com.example.pulseup.ui.record.RecordDestination
+import com.example.pulseup.UserViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 /**
  * Resource: https://medium.com/@santosh_yadav321/bottom-navigation-bar-in-jetpack-compose-5b3c5f2cea9b
@@ -29,8 +34,12 @@ import com.example.pulseup.ui.record.RecordDestination
 
 @Composable
 fun BottomNavigationBar(
-    navController: NavController
+    navController: NavController,
+    userViewModel: UserViewModel = hiltViewModel(),
+//    viewModel: UserViewModel
 ) {
+//    val viewModel = UserViewModel = hiltViewModel()
+
     val selectedNavigationIndex = rememberSaveable {
         mutableIntStateOf(0)
     }
@@ -66,7 +75,14 @@ fun BottomNavigationBar(
                 selected = selectedNavigationIndex.intValue == index,
                 onClick = {
                     selectedNavigationIndex.intValue = index
-                    navController.navigate(item.route)
+//                    navController.navigate(item.route)
+                    if (item.route == ProfileDestination.route) {
+//                        val email = userViewModel.user.value?.email
+                        val username = userViewModel.user.value?.username ?: ""
+                        navController.navigate("profile/$username")
+                    } else {
+                        navController.navigate(item.route)
+                    }
                 },
                 icon = {
                     Icon(imageVector = item.icon, contentDescription = item.title)

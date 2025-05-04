@@ -1,6 +1,7 @@
 package com.example.pulseup
 
 import com.example.pulseup.model.Activity
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class ActivityRepository @Inject constructor (
@@ -11,6 +12,7 @@ class ActivityRepository @Inject constructor (
     suspend fun insertActivity(activity: Activity) {
         activityDao.insertActivity(activity)
     }
+    fun getAllActivities(): Flow<List<Activity>> = activityDao.getAllActivities()
 
     suspend fun getActivitiesByUser(userId: String): List<Activity> {
         return activityDao.getActivitiesByUser(userId)

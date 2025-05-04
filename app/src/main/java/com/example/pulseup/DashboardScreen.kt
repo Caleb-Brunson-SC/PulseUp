@@ -1,21 +1,25 @@
-//package com.example.pulseup
-//
-//import androidx.compose.runtime.Composable
-//import androidx.compose.runtime.livedata.observeAsState
-//import androidx.compose.runtime.mutableStateOf
-//import androidx.compose.runtime.remember
-//
-//import androidx.compose.foundation.clickable
-//import androidx.compose.foundation.layout.*
-//import androidx.compose.foundation.lazy.*
-//import androidx.compose.material3.*
-//import androidx.compose.runtime.*
-//import androidx.compose.runtime.livedata.observeAsState
-//import androidx.compose.ui.Modifier
-//import androidx.compose.ui.unit.dp
-//import androidx.hilt.navigation.compose.hiltViewModel
-//import com.example.pulseup.UserViewModel
-//
+package com.example.pulseup
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.example.pulseup.UserViewModel
+import com.example.pulseup.ui.home.HomeScreen
+import com.example.pulseup.ui.navigation.BottomNavigationBar
+
 //@Composable
 //fun DashboardScreen(
 //    userViewModel: UserViewModel = hiltViewModel(),
@@ -74,3 +78,38 @@
 //        Text("Your fitness journey starts here!", style = MaterialTheme.typography.bodyLarge)
 //    }
 //}
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DashboardScreen(
+    navController: NavHostController,
+    userViewModel: UserViewModel = hiltViewModel(),
+) {
+    val currentDestination = navController.currentBackStackEntry?.destination?.route
+
+    Scaffold(
+        topBar = {
+            PulseUpTopAppBar(
+                title = stringResource(R.string.home),
+                showActionsIcon = true,
+                canNavigateBack = false
+            )
+        },
+        bottomBar = {
+            BottomNavigationBar(
+
+                navController = navController,
+//                viewModel = userViewModel,
+//                currentDestination = currentDestination
+            )
+        }
+    ) { innerPadding ->
+        HomeScreen(
+            modifier = Modifier.padding(innerPadding),
+            viewModel = userViewModel
+        )
+    }
+}
+

@@ -25,18 +25,28 @@ import com.example.pulseup.ui.navigation.NavigationDestination
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.pulseup.UserViewModel
 
 
 /**
  * Companion object for the Profile Screen's Navigation Destination.
  */
 object ProfileDestination : NavigationDestination {
-    override val route = "profile"
+    override val route = "profile/{email}"
+    const val emailArg = "email"
     override val titleRes = R.string.profile
 }
 
@@ -47,14 +57,19 @@ object ProfileDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
+    viewModel: UserViewModel,
+    navigateBack: () -> Unit,
     modifier: Modifier = Modifier
+
 ) {
+
     Scaffold(
         topBar = {
             PulseUpTopAppBar(
                 title = stringResource(ProfileDestination.titleRes),
                 showActionsIcon = true,
-                canNavigateBack = false
+                canNavigateBack = true,
+                navigateUp = navigateBack
             )
         }
     ) {
@@ -88,5 +103,14 @@ fun ProfileScreen(
                 )
             }
         }
+
     }
 }
+
+
+
+
+
+
+
+

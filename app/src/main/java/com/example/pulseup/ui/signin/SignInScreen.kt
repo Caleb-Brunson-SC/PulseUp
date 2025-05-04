@@ -44,7 +44,7 @@ object SignInDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignInScreen(
-    onCompleteButtonClicked: () -> Unit = {},
+//    onCompleteButtonClicked: () -> Unit = {},
     navigateBack: () -> Unit,
     userViewModel: UserViewModel = hiltViewModel(),
     onLoginSuccess: () -> Unit,
@@ -102,11 +102,13 @@ fun SignInScreen(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     userViewModel.login(username, password)
-                    onCompleteButtonClicked()
+//                    onLoginSuccess()
+
                 }
             ) {
                 Text(stringResource(R.string.sign_in))
             }
+            
         }
     }
 }
