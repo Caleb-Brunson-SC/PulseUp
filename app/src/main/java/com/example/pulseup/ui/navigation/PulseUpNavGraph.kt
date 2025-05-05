@@ -11,6 +11,8 @@ import com.example.pulseup.ui.activities.ActivitiesDestination
 import com.example.pulseup.ui.activities.ActivitiesScreen
 import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.home.HomeScreen
+import com.example.pulseup.ui.profile.EditProfileDestination
+import com.example.pulseup.ui.profile.EditProfileScreen
 import com.example.pulseup.ui.profile.ProfileDestination
 import com.example.pulseup.ui.profile.ProfileScreen
 import com.example.pulseup.ui.record.RecordDestination
@@ -77,6 +79,11 @@ fun PulseUpNavHost(
         }
         composable(route = ProfileDestination.route) {
             ProfileScreen()
+        }
+        composable(route = EditProfileDestination.route) {
+            EditProfileScreen(
+                navigateBack = { navController.navigateUp() }
+            )
         }
         composable(route = SettingsDestination.route) {
             SettingsScreen()

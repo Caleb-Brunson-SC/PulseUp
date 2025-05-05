@@ -10,11 +10,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -40,7 +43,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pulseup.ui.navigation.PulseUpNavHost
 import com.example.pulseup.R.string
+import com.example.pulseup.ui.GoalsDestination
 import com.example.pulseup.ui.navigation.BottomNavigationBar
+import com.example.pulseup.ui.profile.EditProfileDestination
+import com.example.pulseup.ui.profile.ProfileDestination
 import com.example.pulseup.ui.settings.SettingsDestination
 import com.example.pulseup.ui.signin.SignInDestination
 import com.example.pulseup.ui.signup.SignUpContiuedDestination
@@ -72,7 +78,31 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
     // https://stackoverflow.com/questions/66837991/hide-top-and-bottom-navigator-on-a-specific-screen-inside-scaffold-jetpack-compo
     Scaffold(
         // Need to figure out how to hide this bottom bar for the Welcome, SignIn and SignUp Screens
-        bottomBar = { if (showBottomBar) BottomNavigationBar(navController) }
+        bottomBar = { if (showBottomBar) BottomNavigationBar(navController) },
+        floatingActionButton = {
+            when (navBackStackEntry?.destination?.route) {
+                ProfileDestination.route -> {
+                    // Edit profile floating action button
+                    ExtendedFloatingActionButton(
+                        onClick = { /* todo navigate to edit screen */
+                            navController.navigate(EditProfileDestination.route)
+                        },
+                        icon = { Icon(Icons.Filled.Edit, "Edit profile FAB.") },
+                        text = { Text(text = "Edit Profile") }
+                    )
+                }
+                GoalsDestination.route -> {
+                    // Edit goals floating action button
+                    ExtendedFloatingActionButton(
+                        onClick = { /* todo navigate to edit screen */
+                            navController.navigate(EditProfileDestination.route)
+                        },
+                        icon = { Icon(Icons.Filled.Add, "Add goal FAB.") },
+                        text = { Text(text = "Add Goal") }
+                    )
+                }
+            }
+        }
     ) {
         PulseUpNavHost(navController = navController)
     }
@@ -119,13 +149,14 @@ fun PulseUpTopAppBar(
                         contentDescription = "Notifications"
                     )
                 }
+                /*
                 IconButton(onClick = { }) {
                     Icon(
                         imageVector = Icons.Filled.Settings,
                         contentDescription = "Settings"
                     )
                 }
-
+                */
                 when {
                     // [START_EXCLUDE]
                     openNotificationsDialog.value -> {
