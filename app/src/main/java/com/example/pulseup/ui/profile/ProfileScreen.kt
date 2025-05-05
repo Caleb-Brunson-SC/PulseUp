@@ -122,6 +122,10 @@ fun ProfileScreen(
                     )
                 }
             }
+            // something new here
+            Text(
+                text = "This Week"
+            )
         }
     }
 }
