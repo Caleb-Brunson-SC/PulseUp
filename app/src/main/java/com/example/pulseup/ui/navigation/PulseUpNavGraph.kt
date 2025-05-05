@@ -17,6 +17,8 @@ import com.example.pulseup.ui.settings.SettingsDestination
 import com.example.pulseup.ui.settings.SettingsScreen
 import com.example.pulseup.ui.signin.SignInDestination
 import com.example.pulseup.ui.signin.SignInScreen
+import com.example.pulseup.ui.signup.SignUpContinuedScreen
+import com.example.pulseup.ui.signup.SignUpContiuedDestination
 import com.example.pulseup.ui.signup.SignUpDestination
 import com.example.pulseup.ui.signup.SignUpScreen
 import com.example.pulseup.ui.welcome.WelcomeDestination
@@ -49,6 +51,12 @@ fun PulseUpNavHost(
         }
         composable(route = SignUpDestination.route) {
             SignUpScreen(
+                onContinueButtonClicked = { navController.navigate(SignUpContiuedDestination.route) },
+                navigateBack = { navController.navigateUp() }
+            )
+        }
+        composable(route = SignUpContiuedDestination.route) {
+            SignUpContinuedScreen(
                 onCompleteButtonClicked = { navController.navigate(HomeDestination.route) },
                 navigateBack = { navController.navigateUp() }
             )

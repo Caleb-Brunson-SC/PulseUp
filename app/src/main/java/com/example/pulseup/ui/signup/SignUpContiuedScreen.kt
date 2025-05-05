@@ -13,6 +13,8 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,30 +28,29 @@ import com.example.pulseup.R
 import com.example.pulseup.ui.navigation.NavigationDestination
 
 /**
- * Companion object for the Sign Up Screen's Navigation Destination.
+ * Companion object for the Sign Up Continued Screen's Navigation Destination.
  */
-object SignUpDestination : NavigationDestination {
-    override val route = "signup"
-    override val titleRes = R.string.sign_up
+object SignUpContiuedDestination : NavigationDestination {
+    override val route = "signup_continued"
+    override val titleRes = R.string.sign_up_continued
 }
 
 /**
- * Entry route for Sign Up screen.
+ * Entry route for Sign Up Continued screen.
  */
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpScreen(
-    onContinueButtonClicked: () -> Unit = {},
+fun SignUpContinuedScreen(
+    onCompleteButtonClicked: () -> Unit = {},
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var fullName by remember { mutableStateOf("") }
-    var username by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var dateOfBirth by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var confirmPassword by remember{ mutableStateOf("") }
+    var age by remember { mutableStateOf("") }
+    var height by remember { mutableStateOf("") }
+    var weight by remember { mutableStateOf("") }
+    var dailyStepGoal by remember { mutableStateOf("") }
+    var dailyCalorieGoal by remember { mutableStateOf("") }
 
     Scaffold(
         topBar = {
@@ -68,54 +69,45 @@ fun SignUpScreen(
             verticalArrangement = Arrangement.Center
         ) {
             OutlinedTextField(
-                value = fullName,
-                onValueChange = { fullName = it },
-                label = { Text("Full Name") },
+                value = age,
+                onValueChange = { age = it },
+                label = { Text("Age") },
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = username,
-                onValueChange = { username = it },
-                label = { Text("Username") },
+                value = height,
+                onValueChange = { height = it },
+                label = { Text("Height") },
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("Email") },
+                value = weight,
+                onValueChange = { weight = it },
+                label = { Text("Weight") },
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = dateOfBirth,
-                onValueChange = { dateOfBirth = it },
-                label = { Text("Birthday") },
+                value = dailyStepGoal,
+                onValueChange = { dailyStepGoal = it },
+                label = { Text("Daily Step Goal") },
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = confirmPassword,
-                onValueChange = { confirmPassword = it },
-                label = { Text("Confirm Password") },
+                value = dailyCalorieGoal,
+                onValueChange = { dailyCalorieGoal = it },
+                label = { Text("Daily Calorie Goal") },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -123,9 +115,9 @@ fun SignUpScreen(
 
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = onContinueButtonClicked
+                onClick = onCompleteButtonClicked
             ) {
-                Text(stringResource(R.string.continue_button))
+                Text(stringResource(R.string.complete))
             }
         }
     }

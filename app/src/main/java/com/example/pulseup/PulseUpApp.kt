@@ -31,6 +31,7 @@ import com.example.pulseup.R.string
 import com.example.pulseup.ui.navigation.BottomNavigationBar
 import com.example.pulseup.ui.settings.SettingsDestination
 import com.example.pulseup.ui.signin.SignInDestination
+import com.example.pulseup.ui.signup.SignUpContiuedDestination
 import com.example.pulseup.ui.signup.SignUpDestination
 import com.example.pulseup.ui.welcome.WelcomeDestination
 
@@ -47,6 +48,7 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
         WelcomeDestination.route -> false // on this screen bottom bar should be hidden
         SignInDestination.route -> false // here too
         SignUpDestination.route -> false // also here
+        SignUpContiuedDestination.route -> false // also here
         else -> true // in all other cases show bottom bar
     }
     // Useful solution:
