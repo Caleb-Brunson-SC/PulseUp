@@ -1,11 +1,18 @@
 package com.example.pulseup
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,11 +25,16 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -51,6 +63,11 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
         SignUpContiuedDestination.route -> false // also here
         else -> true // in all other cases show bottom bar
     }
+
+    /* if (navBackStackEntry?.destination?.route == WelcomeDestination.route) {
+
+    } */
+
     // Useful solution:
     // https://stackoverflow.com/questions/66837991/hide-top-and-bottom-navigator-on-a-specific-screen-inside-scaffold-jetpack-compo
     Scaffold(
@@ -76,6 +93,8 @@ fun PulseUpTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
 ) {
+    val openNotificationsDialog = remember { mutableStateOf(false) }
+
     CenterAlignedTopAppBar(
         title = { Text(title) },
         modifier = modifier,
@@ -92,7 +111,9 @@ fun PulseUpTopAppBar(
         },
         actions = {
             if (showActionsIcon) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = {
+                    openNotificationsDialog.value = !openNotificationsDialog.value
+                }) {
                     Icon(
                         imageVector = Icons.Filled.Notifications,
                         contentDescription = "Notifications"
@@ -104,7 +125,41 @@ fun PulseUpTopAppBar(
                         contentDescription = "Settings"
                     )
                 }
+
+                when {
+                    // [START_EXCLUDE]
+                    openNotificationsDialog.value -> {
+                        NotificationsDialog(
+                            onDismissRequest = { openNotificationsDialog.value = false },
+                        )
+                    }
+                }
             }
         },
     )
 }
+
+// Create notifications dialog?
+@Composable
+fun NotificationsDialog(onDismissRequest: () -> Unit) {
+    Dialog(onDismissRequest = { onDismissRequest() }) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .padding(16.dp),
+            shape = RoundedCornerShape(16.dp),
+        ) {
+            Text(
+                text = "This is a minimal dialog",
+                modifier = Modifier
+                    .fillMaxSize()
+                    .wrapContentSize(Alignment.Center),
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
+
+// Create settings dialog?
