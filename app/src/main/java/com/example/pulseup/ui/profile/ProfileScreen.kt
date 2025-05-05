@@ -30,6 +30,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
@@ -122,9 +123,26 @@ fun ProfileScreen(
                     )
                 }
             }
+
             // something new here
             Text(
-                text = "This Week"
+                text = "Personal Data",
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = "Age: "
+            )
+            Text(
+                text = "Height: "
+            )
+            Text(
+                text = "Weight: "
+            )
+            Text(
+                text = "Daily Step Goal: "
+            )
+            Text(
+                text = "Daily Calorie Goal: "
             )
         }
     }
