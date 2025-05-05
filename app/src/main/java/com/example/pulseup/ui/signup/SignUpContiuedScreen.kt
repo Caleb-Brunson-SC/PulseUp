@@ -55,7 +55,7 @@ fun SignUpContinuedScreen(
     Scaffold(
         topBar = {
             PulseUpTopAppBar(
-                title = stringResource(SignUpDestination.titleRes),
+                title = stringResource(SignUpContiuedDestination.titleRes),
                 showActionsIcon = false,
                 canNavigateBack = true,
                 navigateUp = navigateBack
