@@ -54,6 +54,8 @@ import androidx.compose.ui.unit.toSize
 import androidx.compose.ui.window.Popup
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.R
+import com.example.pulseup.data.Datasource
+import com.example.pulseup.model.Activity
 import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.navigation.NavigationDestination
 import java.text.SimpleDateFormat
@@ -129,48 +131,7 @@ fun RecordScreen(
             )
 
             // Date picker
-            Box(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                OutlinedTextField(
-                    value = selectedDate,
-                    onValueChange = { },
-                    label = { Text("Date") },
-                    readOnly = true,
-                    trailingIcon = {
-                        IconButton(onClick = { showDatePicker = !showDatePicker }) {
-                            Icon(
-                                imageVector = Icons.Default.DateRange,
-                                contentDescription = "Select date"
-                            )
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(64.dp)
-                )
-
-                if (showDatePicker) {
-                    Popup(
-                        onDismissRequest = { showDatePicker = false },
-                        alignment = Alignment.TopStart
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .offset(y = 64.dp)
-                                .shadow(elevation = 4.dp)
-                                .background(MaterialTheme.colorScheme.surface)
-                                .padding(16.dp)
-                        ) {
-                            DatePicker(
-                                state = datePickerState,
-                                showModeToggle = false
-                            )
-                        }
-                    }
-                }
-            }
+            DatePickerFieldToModal()
 
             // Activity type dropdown selection menu
             // Up and down icons for expansion
@@ -254,7 +215,9 @@ fun RecordScreen(
             OutlinedButton(
                 // maybe reduce width
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { /* todo */ }
+                onClick = {
+                    /* todo */
+                }
             ) {
                 Text(stringResource(R.string.publish))
             }

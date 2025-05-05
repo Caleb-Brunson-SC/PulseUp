@@ -29,3 +29,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/**
+ * Thinking about having the Home screen be just a premade list of random user's ("followings")
+ * activities. Then, have the Activities screen use a functional Room database.
+ */

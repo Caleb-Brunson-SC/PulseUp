@@ -5,6 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.pulseup.ui.GoalsDestination
+import com.example.pulseup.ui.GoalsScreen
 import com.example.pulseup.ui.activities.ActivitiesDestination
 import com.example.pulseup.ui.activities.ActivitiesScreen
 import com.example.pulseup.ui.home.HomeDestination
@@ -69,6 +71,9 @@ fun PulseUpNavHost(
         }
         composable(route = ActivitiesDestination.route) {
             ActivitiesScreen()
+        }
+        composable(route = GoalsDestination.route) {
+            GoalsScreen()
         }
         composable(route = ProfileDestination.route) {
             ProfileScreen()
