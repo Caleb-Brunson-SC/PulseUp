@@ -62,16 +62,16 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     showBottomBar = when (navBackStackEntry?.destination?.route) {
-//        WelcomeDestination.route -> false // on this screen bottom bar should be hidden
-//        SignInDestination.route -> false // here too
-//        SignUpDestination.route -> false // also here
-//        SignUpContiuedDestination.route -> false // also here
-//        EditProfileDestination.route -> false
-//        AddGoalDestination.route -> false
-//        else -> true // in all other cases show bottom bar
+        WelcomeDestination.route -> false // on this screen bottom bar should be hidden
+        SignInDestination.route -> false // here too
+        SignUpDestination.route -> false // also here
+        SignUpContiuedDestination.route -> false // also here
+        EditProfileDestination.route -> false
+        AddGoalDestination.route -> false
+        else -> true // in all other cases show bottom bar
 
 
-        WelcomeDestination.route -> true // on this screen bottom bar should be hidden
+        /*WelcomeDestination.route -> true // on this screen bottom bar should be hidden
         HomeDestination.route -> true // on this screen bottom bar should be shown
         ProfileDestination.route -> true // on this screen bottom bar should be shown
         RecordDestination.route -> true // on this screen bottom bar should be shown
@@ -79,7 +79,7 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
         SettingsDestination.route -> true // on this screen bottom bar should be shown
         SignInDestination.route -> false // here too
         SignUpDestination.route -> false // also here
-        else -> true // in all other cases show bottom bar
+        else -> true // in all other cases show bottom bar*/
     }
 
     /* if (navBackStackEntry?.destination?.route == WelcomeDestination.route) {

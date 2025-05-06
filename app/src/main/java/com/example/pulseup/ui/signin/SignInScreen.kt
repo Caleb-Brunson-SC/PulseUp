@@ -101,8 +101,8 @@ fun SignInScreen(
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    userViewModel.login(username, password)
-//                    onCompleteButtonClicked()
+                    //userViewModel.login(username, password) was not commented out
+                    onCompleteButtonClicked() // was commented out
                 }
             ) {
                 Text(stringResource(R.string.sign_in))

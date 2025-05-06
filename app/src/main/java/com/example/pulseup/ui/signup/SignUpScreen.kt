@@ -42,7 +42,7 @@ object SignUpDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(
-//    onContinueButtonClicked: () -> Unit = {},
+    onContinueButtonClicked: () -> Unit = {},
     viewModel: UserViewModel = hiltViewModel(),
     onSignUpSuccess: () -> Unit,
     onLogin: () -> Unit,
