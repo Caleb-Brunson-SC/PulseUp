@@ -47,7 +47,7 @@ fun SignUpScreen(
     var fullName by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
-    var dateOfBirth by remember { mutableStateOf("") }
+    var age by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember{ mutableStateOf("") }
 
@@ -95,9 +95,9 @@ fun SignUpScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedTextField(
-                value = dateOfBirth,
-                onValueChange = { dateOfBirth = it },
-                label = { Text("Birthday") },
+                value = age,
+                onValueChange = { age = it },
+                label = { Text("Age") },
                 modifier = Modifier.fillMaxWidth()
             )
 

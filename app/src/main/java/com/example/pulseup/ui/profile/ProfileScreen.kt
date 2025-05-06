@@ -36,6 +36,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.pulseup.data.Datasource
+import com.example.pulseup.model.User
 
 
 /**
@@ -55,6 +57,8 @@ object ProfileDestination : NavigationDestination {
 fun ProfileScreen(
     modifier: Modifier = Modifier
 ) {
+    val user = Datasource().loadUser()
+
     Scaffold(
         topBar = {
             PulseUpTopAppBar(
@@ -103,7 +107,7 @@ fun ProfileScreen(
                         text = "Following"
                     )
                     Text(
-                        text = "64",
+                        text = user.following,
                         fontWeight = FontWeight.Bold
                     )
                 }
@@ -113,11 +117,13 @@ fun ProfileScreen(
                         text = "Followers"
                     )
                     Text(
-                        text = "66",
+                        text = user.followers,
                         fontWeight = FontWeight.Bold
                     )
                 }
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             // something new here
             Text(
@@ -125,19 +131,19 @@ fun ProfileScreen(
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "Age: "
+                text = "Age: ${user.age} years"
             )
             Text(
-                text = "Height: "
+                text = "Height: ${user.height} feet"
             )
             Text(
-                text = "Weight: "
+                text = "Weight: ${user.weight} lbs"
             )
             Text(
-                text = "Daily Step Goal: "
+                text = "Daily Step Goal: ${user.dailyStepGoal}"
             )
             Text(
-                text = "Daily Calorie Goal: "
+                text = "Daily Calorie Goal: ${user.dailyCalorieGoal}"
             )
         }
     }

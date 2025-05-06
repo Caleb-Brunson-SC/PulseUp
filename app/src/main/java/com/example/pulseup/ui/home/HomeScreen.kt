@@ -15,8 +15,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -62,7 +69,7 @@ fun HomeScreen(
         }
     ) {
         ActivityList(
-            activityList = Datasource().loadActivities(),
+            activityList = Datasource().loadOtherUsersActivities(),
         )
     }
 }
@@ -71,7 +78,7 @@ fun HomeScreen(
 fun ActivityList(activityList: List<Activity>, modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = Modifier
-            .padding(start = 4.dp, top = 100.dp, end = 4.dp)
+            .padding(start = 4.dp, top = 100.dp, end = 4.dp, bottom = 100.dp)
             .fillMaxSize()
     ) {
         items(activityList) { activity ->
@@ -173,6 +180,26 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
                 text = activity.notes
             )
             // optional image??
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                OutlinedButton(
+                    onClick = {  }
+                ) {
+                    Icon(Icons.Filled.ThumbUp, "Like")
+                    Text("Like")
+                }
+
+                OutlinedButton(
+                    onClick = {  }
+                ) {
+                    Icon(Icons.Filled.AccountCircle, "See Comments")
+                    Text("View Comments")
+                }
+            }
         }
     }
 }

@@ -46,7 +46,7 @@ fun SignUpContinuedScreen(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var age by remember { mutableStateOf("") }
+    //var age by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
     var dailyStepGoal by remember { mutableStateOf("") }
@@ -68,15 +68,6 @@ fun SignUpContinuedScreen(
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center
         ) {
-            OutlinedTextField(
-                value = age,
-                onValueChange = { age = it },
-                label = { Text("Age") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
             OutlinedTextField(
                 value = height,
                 onValueChange = { height = it },
