@@ -38,11 +38,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pulseup.ui.navigation.PulseUpNavHost
 import com.example.pulseup.R.string
+import com.example.pulseup.ui.activities.ActivitiesDestination
 import com.example.pulseup.ui.goals.AddGoalDestination
 import com.example.pulseup.ui.goals.GoalsDestination
+import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.navigation.BottomNavigationBar
 import com.example.pulseup.ui.profile.EditProfileDestination
 import com.example.pulseup.ui.profile.ProfileDestination
+import com.example.pulseup.ui.record.RecordDestination
+import com.example.pulseup.ui.settings.SettingsDestination
 import com.example.pulseup.ui.signin.SignInDestination
 import com.example.pulseup.ui.signup.SignUpContiuedDestination
 import com.example.pulseup.ui.signup.SignUpDestination
@@ -58,12 +62,23 @@ fun PulseUpApp(navController: NavHostController = rememberNavController()) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     showBottomBar = when (navBackStackEntry?.destination?.route) {
-        WelcomeDestination.route -> false // on this screen bottom bar should be hidden
+//        WelcomeDestination.route -> false // on this screen bottom bar should be hidden
+//        SignInDestination.route -> false // here too
+//        SignUpDestination.route -> false // also here
+//        SignUpContiuedDestination.route -> false // also here
+//        EditProfileDestination.route -> false
+//        AddGoalDestination.route -> false
+//        else -> true // in all other cases show bottom bar
+
+
+        WelcomeDestination.route -> true // on this screen bottom bar should be hidden
+        HomeDestination.route -> true // on this screen bottom bar should be shown
+        ProfileDestination.route -> true // on this screen bottom bar should be shown
+        RecordDestination.route -> true // on this screen bottom bar should be shown
+        ActivitiesDestination.route -> true // on this screen bottom bar should be shown
+        SettingsDestination.route -> true // on this screen bottom bar should be shown
         SignInDestination.route -> false // here too
         SignUpDestination.route -> false // also here
-        SignUpContiuedDestination.route -> false // also here
-        EditProfileDestination.route -> false
-        AddGoalDestination.route -> false
         else -> true // in all other cases show bottom bar
     }
 

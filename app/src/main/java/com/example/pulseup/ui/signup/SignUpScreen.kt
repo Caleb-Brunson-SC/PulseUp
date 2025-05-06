@@ -21,8 +21,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.R
+import com.example.pulseup.UserViewModel
 import com.example.pulseup.ui.navigation.NavigationDestination
 
 /**
@@ -40,7 +42,12 @@ object SignUpDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(
-    onContinueButtonClicked: () -> Unit = {},
+//    onContinueButtonClicked: () -> Unit = {},
+    viewModel: UserViewModel = hiltViewModel(),
+    onSignUpSuccess: () -> Unit,
+    onLogin: () -> Unit,
+
+
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {

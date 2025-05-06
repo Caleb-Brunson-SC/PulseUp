@@ -1,13 +1,18 @@
 package com.example.pulseup.model
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.UUID
 
 /**
  * [Activity] is the data class to represent the Activity components.
  */
+@Entity(tableName = "activities")
 data class Activity(
     @DrawableRes val imageResourceId: Int,
+    @PrimaryKey val id: String = UUID.randomUUID().toString(),
+    val userId: String,
     val imageDescription: String,
     val userFullName: String,
     val date: String,
@@ -18,3 +23,6 @@ data class Activity(
     val workout: String,
     val notes: String
 )
+
+
+
