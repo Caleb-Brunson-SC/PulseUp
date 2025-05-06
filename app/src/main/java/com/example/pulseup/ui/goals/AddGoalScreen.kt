@@ -254,7 +254,8 @@ fun AddGoalScreen(
                 value = goalContent,
                 onValueChange = { goalContent = it },
                 label = { Text("Goal Content") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = false
             )
 
             Spacer(modifier = Modifier.height(8.dp))
