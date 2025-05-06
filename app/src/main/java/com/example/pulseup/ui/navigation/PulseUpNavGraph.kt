@@ -2,9 +2,11 @@ package com.example.pulseup.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.pulseup.UserViewModel
 import com.example.pulseup.ui.goals.GoalsDestination
 import com.example.pulseup.ui.goals.GoalsScreen
 import com.example.pulseup.ui.activities.ActivitiesDestination
@@ -37,6 +39,7 @@ import com.example.pulseup.ui.welcome.WelcomeScreen
 fun PulseUpNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
+    userViewModel: UserViewModel = hiltViewModel()
 ) {
     NavHost(
         navController = navController,
@@ -51,14 +54,20 @@ fun PulseUpNavHost(
         }
         composable(route = SignInDestination.route) {
             SignInScreen(
-                onCompleteButtonClicked = { navController.navigate(HomeDestination.route) },
+//                onCompleteButtonClicked = { navController.navigate(HomeDestination.route) },
+                onLoginSuccess = { navController.navigate(HomeDestination.route) },
+                onSignUp = { navController.navigate(SignUpDestination.route) },
                 navigateBack = { navController.navigateUp() }
             )
         }
         composable(route = SignUpDestination.route) {
             SignUpScreen(
-                onContinueButtonClicked = { navController.navigate(SignUpContiuedDestination.route) },
+                viewModel = userViewModel,
+                onSignUpSuccess = { navController.navigate(HomeDestination.route) },
+                onLogin = { navController.navigate(SignInDestination.route) },
                 navigateBack = { navController.navigateUp() }
+//                onContinueButtonClicked = { navController.navigate(SignUpContiuedDestination.route) },
+//                navigateBack = { navController.navigateUp() }
             )
         }
         composable(route = SignUpContiuedDestination.route) {

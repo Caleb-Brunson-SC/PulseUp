@@ -4,7 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pulseup.model.Activity
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,6 +24,12 @@ class UserViewModel @Inject constructor(
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: LiveData<String?> = _errorMessage
 
+    private val _loginSuccessful = MutableLiveData(false)
+    val loginSuccessful: LiveData<Boolean> = _loginSuccessful
+
+    val activities: StateFlow<List<Activity>> = userRepository.getActivities()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
     fun getUserById(id: String) {
         viewModelScope.launch {
             _user.value = userRepository.getUserById(id)
@@ -25,23 +37,52 @@ class UserViewModel @Inject constructor(
         }
     }
 
+    fun getUser(email: String): Flow<User?> {
+        return userRepository.getUserByEmailFlow(email)
+    }
+
+    fun getUserByUsername(username: String) {
+        viewModelScope.launch {
+            _user.value = userRepository.getUserByUsername(username)
+        }
+    }
+
+    fun loadUserByUsername(username: String) {
+        viewModelScope.launch {
+            val user = userRepository.getUserByUsername(username.trim())
+            _user.value = user
+        }
+    }
+
+
+    fun loadUserByEmail(email: String) {
+        viewModelScope.launch {
+            val user = userRepository.getUserByEmailSuspend(email.trim())
+            _user.value = user
+        }
+    }
+
     fun updateUser(user: User) {
         viewModelScope.launch {
             userRepository.updateUser(user)
+
         }
     }
 
     fun login(username: String, password: String) {
+
         viewModelScope.launch {
-            val user = userRepository.getUserByUsername(username)
-            if (user != null && user.password == password)  {
+            val user = userRepository.login(username, password)
+
+            if (user != null) {
                 _user.value = user
+                _errorMessage.value = null
+                _loginSuccessful.value = true
             } else {
                 _user.value = null
                 _errorMessage.value = "Invalid username or password"
+                _loginSuccessful.value = false
             }
-
-
         }
 
     }
@@ -61,10 +102,10 @@ class UserViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             val existingEmailUser = userRepository.getUserByEmail(email)
-            if (existingEmailUser != null) {
-                _errorMessage.value = "Email already exists!"
-                return@launch
-            }
+//            if (existingEmailUser != null) {
+//                _errorMessage.value = "Email already exists!"
+//                return@launch
+
             val existingUsernameUser = userRepository.getUserByUsername(username)
             if (existingUsernameUser != null) {
                 _errorMessage.value = "Username already exists!"
@@ -90,6 +131,5 @@ class UserViewModel @Inject constructor(
         }
     }
 }
-
 
 

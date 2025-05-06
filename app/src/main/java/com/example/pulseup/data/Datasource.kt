@@ -14,7 +14,7 @@ class Datasource {
                 "April 28, 2025", "Columbia, South Carolina",
                 "Jog Through Downtown", "Run",
                 "1:04 hrs", "RUNNING", "5 miles at 8:00 min/mi pace",
-                "Felt really good! Weather was nice.", workout = "", notes = "")
+                "Felt really good! Weather was nice.", notes = "")
         )
     }
 }

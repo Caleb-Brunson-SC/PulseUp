@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.pulseup.model.Activity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ActivityDao {
@@ -19,5 +20,8 @@ interface ActivityDao {
 
     @Query("DELETE FROM activities WHERE id = :activityId")
     suspend fun deleteActivity(activityId: String)
+
+    @Query("SELECT * FROM activities")
+    fun getAllActivities(): Flow<List<Activity>>
 
 }

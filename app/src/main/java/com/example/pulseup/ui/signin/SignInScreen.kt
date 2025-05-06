@@ -102,7 +102,7 @@ fun SignInScreen(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     userViewModel.login(username, password)
-                    onCompleteButtonClicked()
+//                    onCompleteButtonClicked()
                 }
             ) {
                 Text(stringResource(R.string.sign_in))

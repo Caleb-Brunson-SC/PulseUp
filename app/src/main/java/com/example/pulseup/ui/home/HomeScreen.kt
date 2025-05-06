@@ -26,8 +26,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.R
+import com.example.pulseup.UserViewModel
 import com.example.pulseup.data.Datasource
 import com.example.pulseup.model.Activity
 import com.example.pulseup.ui.activities.ActivitiesDestination
@@ -50,7 +52,8 @@ object HomeDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    userViewModel: UserViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
