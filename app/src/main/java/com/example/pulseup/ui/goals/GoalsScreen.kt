@@ -29,6 +29,7 @@ object GoalsDestination: NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GoalsScreen(
+    navigateBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -36,7 +37,8 @@ fun GoalsScreen(
             PulseUpTopAppBar(
                 title = stringResource(GoalsDestination.titleRes),
                 showActionsIcon = true,
-                canNavigateBack = false
+                canNavigateBack = true,
+                navigateUp = navigateBack
             )
         }
     ) {

@@ -6,6 +6,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.pulseup.DashboardScreen
 import com.example.pulseup.UserViewModel
 import com.example.pulseup.ui.goals.GoalsDestination
 import com.example.pulseup.ui.goals.GoalsScreen
@@ -77,16 +78,27 @@ fun PulseUpNavHost(
             )
         }
         composable(route = HomeDestination.route) {
-            HomeScreen()
+//            HomeScreen()
+            DashboardScreen(
+                navController = navController,
+                userViewModel = userViewModel
+            )
         }
         composable(route = RecordDestination.route) {
-            RecordScreen()
+            RecordScreen(
+                navigateBack = { navController.navigateUp() }
+            )
         }
         composable(route = ActivitiesDestination.route) {
-            ActivitiesScreen()
+            ActivitiesScreen(
+                navigateBack = { navController.navigateUp() },
+
+            )
         }
         composable(route = GoalsDestination.route) {
-            GoalsScreen()
+            GoalsScreen(
+                navigateBack = { navController.navigateUp() }
+            )
         }
         composable(route = AddGoalDestination.route) {
             AddGoalScreen(
@@ -94,7 +106,10 @@ fun PulseUpNavHost(
             )
         }
         composable(route = ProfileDestination.route) {
-            ProfileScreen()
+            ProfileScreen(
+                viewModel = userViewModel,
+                navigateBack = { navController.navigateUp() }
+            )
         }
         composable(route = EditProfileDestination.route) {
             EditProfileScreen(
