@@ -179,7 +179,7 @@ fun NotificationsDialog(onDismissRequest: () -> Unit) {
             shape = RoundedCornerShape(16.dp),
         ) {
             Text(
-                text = "This is a minimal dialog",
+                text = "You have no new notifications.",
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentSize(Alignment.Center),

@@ -2,6 +2,7 @@ package com.example.pulseup.data
 
 import com.example.pulseup.R
 import com.example.pulseup.model.Activity
+import com.example.pulseup.model.Goal
 import com.example.pulseup.model.User
 
 /**
@@ -40,6 +41,13 @@ class Datasource {
             R.drawable.gigachad, "gigachad", "Giga Chad", "gigachad",
             "giga.chad@gmail.com", "24", "12345", "6'5", "205",
             "10,000", "5,000", "66", "64"
+        )
+    }
+
+    fun loadGoals() : List<Goal> {
+        return listOf<Goal>(
+            Goal("Monday Rundays!", true, "Monday", "Run",
+                "Run", "Run 5 miles at the park.")
         )
     }
 }

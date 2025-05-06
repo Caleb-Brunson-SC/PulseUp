@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
@@ -192,14 +193,14 @@ fun ActivityCard(activity: Activity, modifier: Modifier = Modifier) {
                 OutlinedButton(
                     onClick = {  }
                 ) {
-                    Icon(Icons.Filled.Edit, "Edit activity")
+                    Icon(Icons.Filled.Edit, "Edit goal")
                     Text("Edit")
                 }
 
                 OutlinedButton(
                     onClick = {  }
                 ) {
-                    Icon(Icons.Filled.Delete, "Remove activity")
+                    Icon(Icons.Filled.Delete, "Remove goal")
                     Text("Remove")
                 }
             }
