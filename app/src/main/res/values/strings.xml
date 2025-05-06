@@ -8,6 +8,7 @@
     <string name="activities">Activities</string>
     <string name="goals">Goals</string>
     <string name="add_goal">Add Goal</string>
+    <string name="publish_goal">Publish Goal</string>
     <string name="profile">Profile</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="upload_new">Upload New</string>

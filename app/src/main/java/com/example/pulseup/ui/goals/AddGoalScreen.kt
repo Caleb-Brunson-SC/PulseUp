@@ -25,6 +25,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -101,6 +102,9 @@ fun AddGoalScreen(
     // Create a string value to store the selected activity type
     var activitySelection by remember { mutableStateOf("") }
     var activityTextFieldSize by remember { mutableStateOf(Size.Zero) }
+
+    // Goal content
+    var goalContent by remember { mutableStateOf("")}
 
     Scaffold(
         topBar = {
@@ -242,6 +246,27 @@ fun AddGoalScreen(
                         )
                     }
                 }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = goalContent,
+                onValueChange = { goalContent = it },
+                label = { Text("Goal Content") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedButton(
+                // maybe reduce width
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    /* todo */
+                }
+            ) {
+                Text(stringResource(R.string.publish_goal))
             }
         }
     }
