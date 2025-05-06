@@ -36,6 +36,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.pulseup.UserViewModel
 
 
 /**
@@ -53,6 +54,8 @@ object ProfileDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
+    viewModel: UserViewModel,
+    navigateBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -60,7 +63,9 @@ fun ProfileScreen(
             PulseUpTopAppBar(
                 title = stringResource(ProfileDestination.titleRes),
                 showActionsIcon = true,
-                canNavigateBack = false
+                canNavigateBack = true,
+                navigateUp = navigateBack
+
             )
         }
     ) {

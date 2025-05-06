@@ -80,6 +80,7 @@ object RecordDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecordScreen(
+    navigateBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var title by remember { mutableStateOf("") }
@@ -113,7 +114,8 @@ fun RecordScreen(
             PulseUpTopAppBar(
                 title = stringResource(RecordDestination.titleRes),
                 showActionsIcon = true,
-                canNavigateBack = false
+                canNavigateBack = true,
+                navigateUp = navigateBack
             )
         }
     ) {

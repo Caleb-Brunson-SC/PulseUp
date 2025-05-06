@@ -54,14 +54,16 @@ object ActivitiesDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ActivitiesScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navigateBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
             PulseUpTopAppBar(
                 title = stringResource(ActivitiesDestination.titleRes),
                 showActionsIcon = true,
-                canNavigateBack = false
+                canNavigateBack = true,
+                navigateUp = navigateBack
             )
         }
     ) {
