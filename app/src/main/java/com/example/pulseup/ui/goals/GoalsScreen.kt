@@ -1,4 +1,4 @@
-package com.example.pulseup.ui
+package com.example.pulseup.ui.goals
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import com.example.pulseup.PulseUpTopAppBar
 import com.example.pulseup.R
 import com.example.pulseup.ui.navigation.NavigationDestination
-import com.example.pulseup.ui.profile.ProfileDestination
 
 /**
  * Companion object for the Goal Screen's Navigation Destination.

@@ -18,8 +18,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.example.pulseup.ui.GoalsDestination
+import com.example.pulseup.ui.goals.GoalsDestination
 import com.example.pulseup.ui.activities.ActivitiesDestination
 import com.example.pulseup.ui.home.HomeDestination
 import com.example.pulseup.ui.profile.ProfileDestination
