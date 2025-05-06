@@ -46,8 +46,14 @@ class Datasource {
 
     fun loadGoals() : List<Goal> {
         return listOf<Goal>(
-            Goal("Monday Rundays!", true, "Monday", "Run",
-                "Run", "Run 5 miles at the park.")
+            Goal("Monday Rundays!", true, "Monday", "",
+                "Run", "Run 5 miles at the park."),
+            Goal("Swim Workout", false, "", "May 7, 2025",
+                "Swim", "Swim laps in public pool for 30 minutes."),
+            Goal("Calisthenics Workout", false, "", "May 10, 2025",
+                "Calisthenics", "Do a push-up and pull-up workout."),
+            Goal("Biking Workout", true, "Tuesday", "",
+                "Bike", "Ride up the hills every Tuesday morning.")
         )
     }
 }

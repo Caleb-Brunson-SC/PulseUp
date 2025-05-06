@@ -85,7 +85,9 @@ fun PulseUpNavHost(
             )
         }
         composable(route = ProfileDestination.route) {
-            ProfileScreen()
+            ProfileScreen(
+                onSignOut = { navController.navigate(WelcomeDestination.route) }
+            )
         }
         composable(route = EditProfileDestination.route) {
             EditProfileScreen(

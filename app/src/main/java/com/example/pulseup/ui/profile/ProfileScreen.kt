@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -28,6 +29,8 @@ import com.example.pulseup.ui.navigation.NavigationDestination
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -55,7 +58,9 @@ object ProfileDestination : NavigationDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onSignOut: () -> Unit = {},
+
 ) {
     val user = Datasource().loadUser()
 
@@ -145,6 +150,21 @@ fun ProfileScreen(
             Text(
                 text = "Daily Calorie Goal: ${user.dailyCalorieGoal}"
             )
+
+            Spacer(modifier = Modifier.height(35.dp))
+
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                OutlinedButton(
+                    onClick = { onSignOut() }
+                ) {
+                    Icon(Icons.Filled.Lock, "sign out")
+                    Text("Sign Out")
+                }
+            }
         }
     }
 }
