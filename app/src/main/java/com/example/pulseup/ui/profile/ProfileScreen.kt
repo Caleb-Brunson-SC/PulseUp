@@ -75,8 +75,9 @@ fun ProfileScreen(
     ) {
         Column (
             modifier = Modifier
+                .padding(16.dp)
                 .padding(top = 100.dp)
-                .padding(start = 8.dp, top = 75.dp, end = 8.dp)
+//                .padding(start = 8.dp, top = 75.dp, end = 8.dp)
                 .fillMaxSize()
         ) {
             Row (
