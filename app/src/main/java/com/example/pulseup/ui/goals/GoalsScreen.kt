@@ -68,7 +68,9 @@ fun GoalsScreen(
 fun GoalList(goalList: List<Goal>, modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = Modifier
-            .padding(start = 4.dp, top = 100.dp, end = 4.dp, bottom = 100.dp)
+//            .padding(start = 4.dp, top = 100.dp, end = 4.dp, bottom = 100.dp)
+            .padding(16.dp)
+            .padding(top = 100.dp)
             .fillMaxSize()
     ) {
         items(goalList) { goal ->
